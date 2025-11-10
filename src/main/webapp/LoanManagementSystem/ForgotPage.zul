@@ -1,0 +1,105 @@
+<?page title="Forgot Page" contentType="text/html;charset=UTF-8"?>
+<zk>
+<style>
+body, .z-body {
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+    font-family: 'Poppins', sans-serif;
+}
+
+
+.forgot-window {
+    position: fixed;
+    right: 60px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 400px;
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+    padding: 25px;
+    text-align: center;
+    animation: slideInRight 0.8s ease; 
+}
+
+
+@keyframes slideInRight {
+    from {
+        transform: translate(100%, -50%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(-50%);
+        opacity: 1;
+    }
+}
+
+.title-label {
+    font-size: 22px;
+    font-weight: 600;
+    color: #1e1e1e;
+    margin-bottom: 5px;
+}
+
+
+.subtitle-label {
+    color: #777;
+    font-size: 13px;
+    margin-bottom: 15px;
+}
+
+.z-textbox {
+    width: 80%;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    transition: 0.3s;
+}
+
+.z-textbox:focus {
+    border-color: #2575fc;
+    box-shadow: 0 0 5px rgba(37,117,252,0.4);
+}
+
+.btn {
+    background: linear-gradient(90deg, #6a11cb, #2575fc);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: linear-gradient(90deg, #2575fc, #6a11cb);
+    transform: scale(1.05);
+}
+
+.forgot-window:hover {
+    box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+}
+</style>
+	<window border="normal" width="400px"
+		sclass="forgot-window" apply="com.iispl.lms.forgot.ForgotComposer">
+		
+		<vlayout spacing="15px">
+			<label value="Forgot Password"
+				style="font-size:20px; font-weight:bold;" sclass="title-label"/>
+
+			<label
+				value="Enter your registered email to reset your password."
+				style="color:gray; font-size:13px;" sclass="subtitle-label"/>
+
+			<textbox id="emailBox" placeholder="Enter Your Email"
+				width="80%" />
+
+			<button id="resetBtn" label="Send Reset Link" width="60%"
+				sclass="btn" />
+
+		</vlayout>
+	</window>
+</zk>
