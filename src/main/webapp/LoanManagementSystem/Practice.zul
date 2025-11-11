@@ -1,0 +1,176 @@
+<?page title="Sign Up" contentType="text/html;charset=UTF-8"?>
+<zk>
+    <style>
+    .signup-window {
+        background: #f9fbff;
+        border-radius: 15px;
+        padding: 25px;
+        box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    }
+
+    .form-title {
+        font-size: 22px;
+        font-weight: bold;
+        color: #1a237e;
+    }
+
+    .step-title {
+        font-size: 18px;
+        color: #0d47a1;
+        margin-bottom: 10px;
+        font-weight: 600;
+    }
+
+    .form-grid {
+        width: 90%;
+        background: #fff;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    }
+
+    .form-grid label {
+        font-weight: 500;
+        color: #333;
+    }
+
+    .form-grid textbox, 
+    .form-grid combobox, 
+    .form-grid datebox {
+        width: 250px;
+        border: 1px solid #90caf9;
+        border-radius: 8px;
+        padding: 5px;
+    }
+
+    .nav-btn {
+        background-color: #1565c0;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        padding: 8px 15px;
+        cursor: pointer;
+    }
+
+    .nav-btn:hover {
+        background-color: #0d47a1;
+    }
+
+    .submit-btn {
+        background-color: #2e7d32;
+        color: white;
+        padding: 8px 20px;
+        border-radius: 8px;
+        border: none;
+    }
+
+    .progress-container {
+        width: 80%;
+        background-color: #e0e0e0;
+        border-radius: 20px;
+        height: 10px;
+        margin: 10px 0;
+        overflow: hidden;
+    }
+
+    .progress-bar {
+        height: 10px;
+        background-color: #1565c0;
+        width: 25%;
+        border-radius: 20px;
+        transition: width 0.5s ease-in-out;
+    }
+
+    .center-screen {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+    }
+    </style>
+
+   
+    <div sclass="center-screen">
+        <window title="Bank Account Registration" border="normal" width="70%"
+                sclass="signup-window" closable="false" apply="com.iispl.lms.signup.SignUpComposer">
+
+            <vbox align="center" spacing="10px">
+                <label value="Open a New Bank Account" sclass="form-title"/>
+                <separator/>
+
+                
+                <div sclass="progress-container">
+                    <div id="progressBar" sclass="progress-bar"/>
+                </div>
+
+                <!-- Step 1 -->
+                <vlayout id="step1" sclass="form-step">
+                    <label value="Step 1: Account Information" sclass="step-title"/>
+                    <grid sclass="form-grid">
+                        <rows>
+                            <row><label value="Full Name:"/><textbox id="fullName" placeholder="Enter your full name"/></row>
+                            <row><label value="Email Address:"/><textbox id="email" type="email" placeholder="example@mail.com"/></row>
+                            <row><label value="Phone Number:"/><textbox id="phone" maxlength="10" placeholder="9876543210"/></row>
+                            <row><label value="Password:"/><textbox id="password" type="password" placeholder="Enter password"/></row>
+                            <row><label value="Confirm Password:"/><textbox id="confirmPassword" type="password" placeholder="Re-enter password"/></row>
+                        </rows>
+                    </grid>
+                </vlayout>
+
+                <!-- Step 2 -->
+                <vlayout id="step2" visible="false" sclass="form-step">
+                    <label value="Step 2: Personal Details" sclass="step-title"/>
+                    <grid sclass="form-grid">
+                        <rows>
+                            <row><label value="Date of Birth:"/><datebox id="dob"/></row>
+                            <row><label value="Gender:"/><combobox id="gender"><comboitem label="Male"/><comboitem label="Female"/><comboitem label="Other"/></combobox></row>
+                            <row><label value="Nationality:"/><combobox id="nationality"><comboitem label="Indian"/><comboitem label="Other"/></combobox></row>
+                            <row><label value="Govt ID Type:"/><combobox id="idType"><comboitem label="Aadhar"/><comboitem label="PAN"/><comboitem label="Voter ID"/><comboitem label="Passport"/></combobox></row>
+                            <row><label value="Govt ID Number:"/><textbox id="idNumber" placeholder="Enter ID Number"/></row>
+                            <row><label value="Upload ID Proof:"/><fileupload id="idUpload" label="Upload" upload="true"/></row>
+                            <row><label value="Occupation:"/><combobox id="occupation"><comboitem label="Salaried"/><comboitem label="Student"/><comboitem label="Self-Employed"/><comboitem label="Retired"/></combobox></row>
+                            <row><label value="Monthly Income:"/><textbox id="income" placeholder="e.g., 50000"/></row>
+                        </rows>
+                    </grid>
+                </vlayout>
+
+                <!-- Step 3 -->
+                <vlayout id="step3" visible="false" sclass="form-step">
+                    <label value="Step 3: Address Details" sclass="step-title"/>
+                    <grid sclass="form-grid">
+                        <rows>
+                            <row><label value="Address Line 1:"/><textbox id="address1"/></row>
+                            <row><label value="Address Line 2:"/><textbox id="address2"/></row>
+                            <row><label value="Country:"/><textbox id="country" placeholder="India"/></row>
+                            <row><label value="State:"/><textbox id="state"/></row>
+                            <row><label value="City:"/><textbox id="city"/></row>
+                            <row><label value="Postal Code:"/><textbox id="postalCode"/></row>
+                        </rows>
+                    </grid>
+                </vlayout>
+
+                <!-- Step 4 -->
+                <vlayout id="step4" visible="false" sclass="form-step">
+                    <label value="Step 4: Security &amp; Compliance" sclass="step-title"/>
+                    <grid sclass="form-grid">
+                        <rows>
+                            <row><label value="Security Question:"/><textbox id="securityQuestion" placeholder="e.g., Your first pet's name?"/></row>
+                            <row><label value="Answer:"/><textbox id="securityAnswer"/></row>
+                            <row><label value="2FA Enabled:"/><checkbox id="twoFA" label="Enable Two-Factor Authentication"/></row>
+                            <row><label/><checkbox id="terms" label="I agree to Terms &amp; Conditions"/></row>
+                            <row><label/><checkbox id="privacy" label="I agree to Privacy Policy"/></row>
+                        </rows>
+                    </grid>
+                </vlayout>
+
+                <!-- Navigation Buttons -->
+                <hbox spacing="10px" align="center">
+                    <button id="prevBtn" label="Previous" sclass="nav-btn" disabled="true"/>
+                    <button id="nextBtn" label="Next" sclass="nav-btn"/>
+                    <button id="submitBtn" label="Submit" visible="false" sclass="submit-btn"/>
+                </hbox>
+            </vbox>
+        </window>
+    </div>
+</zk>
