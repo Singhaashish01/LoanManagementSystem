@@ -107,7 +107,7 @@
 
     <div class="right-panel">
         <window border="normal" sclass="forgot-window"
-            apply="com.iispl.lms.forgot.ForgotComposer">
+            apply="com.iispl.lms.forgot.ForgotComposer" width="400px">
 
             <vlayout spacing="15px">
                 <label value="Forgot Password" sclass="title-label" />

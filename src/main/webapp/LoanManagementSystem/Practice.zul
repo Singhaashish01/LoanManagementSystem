@@ -1,175 +1,236 @@
 <?page title="Sign Up" contentType="text/html;charset=UTF-8"?>
 <zk>
     <style>
-    .signup-window {
-        background: #f9fbff;
-        border-radius: 15px;
-        padding: 25px;
-        box-shadow: 0 0 20px rgba(0,0,0,0.1);
-    }
+        /* === Page Background === */
+        .center-screen {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #004a99;
+        }
 
-    .form-title {
-        font-size: 22px;
-        font-weight: bold;
-        color: #1a237e;
-    }
+        /* === Signup Card === */
+        .signup-window {
+            background: #ffffff;
+            border-radius: 15px;
+            padding: 30px 40px;
+            box-shadow: 0 0 25px rgba(0,0,0,0.15);
+            width: 75%;
+            max-width: 900px;
+        }
 
-    .step-title {
-        font-size: 18px;
-        color: #0d47a1;
-        margin-bottom: 10px;
-        font-weight: 600;
-    }
+        /* === Titles === */
+        .form-title {
+            font-size: 22px;
+            font-weight: bold;
+            color: #1a237e;
+            text-align: center;
+            margin-bottom: 10px;
+        }
 
-    .form-grid {
-        width: 90%;
-        background: #fff;
-        border-radius: 10px;
-        padding: 20px;
-        box-shadow: 0 0 10px rgba(0,0,0,0.05);
-    }
+        .step-title {
+            font-size: 18px;
+            color: #0d47a1;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
 
-    .form-grid label {
-        font-weight: 500;
-        color: #333;
-    }
+        /* === Progress Bar === */
+        .progress-container {
+            width: 80%;
+            background-color: #e0e0e0;
+            border-radius: 20px;
+            height: 10px;
+            margin: 15px 0;
+            overflow: hidden;
+        }
 
-    .form-grid textbox, 
-    .form-grid combobox, 
-    .form-grid datebox {
-        width: 250px;
-        border: 1px solid #90caf9;
-        border-radius: 8px;
-        padding: 5px;
-    }
+        .progress-bar {
+            height: 10px;
+            background-color: #1565c0;
+            width: 25%;
+            border-radius: 20px;
+            transition: width 0.5s ease-in-out;
+        }
 
-    .nav-btn {
-        background-color: #1565c0;
-        color: white;
-        border: none;
-        border-radius: 8px;
-        padding: 8px 15px;
-        cursor: pointer;
-    }
+        /* === Form Grid === */
+        .form-grid {
+            width: 90%;
+            background: #fdfdfd;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.05);
+        }
 
-    .nav-btn:hover {
-        background-color: #0d47a1;
-    }
+        .form-grid label {
+            font-weight: 500;
+            color: #333;
+        }
 
-    .submit-btn {
-        background-color: #2e7d32;
-        color: white;
-        padding: 8px 20px;
-        border-radius: 8px;
-        border: none;
-    }
+        .form-grid textbox,
+        .form-grid longbox,
+        .form-grid combobox,
+        .form-grid datebox {
+            width: 250px;
+            border: 1px solid #90caf9;
+            border-radius: 8px;
+            padding: 5px;
+        }
 
-    .progress-container {
-        width: 80%;
-        background-color: #e0e0e0;
-        border-radius: 20px;
-        height: 10px;
-        margin: 10px 0;
-        overflow: hidden;
-    }
+        /* === Buttons === */
+        .nav-btn {
+            background-color: #1565c0;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 8px 15px;
+            cursor: pointer;
+        }
 
-    .progress-bar {
-        height: 10px;
-        background-color: #1565c0;
-        width: 25%;
-        border-radius: 20px;
-        transition: width 0.5s ease-in-out;
-    }
+        .nav-btn:hover {
+            background-color: #0d47a1;
+        }
 
-    .center-screen {
-        height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background: linear-gradient(135deg, #e3f2fd, #bbdefb);
-    }
+        .submit-btn {
+            background-color: #2e7d32;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 8px;
+            border: none;
+        }
+
+        /* === OTP Fields === */
+        .otp-section textbox {
+            width: 150px;
+            text-align: center;
+            border: 1px solid #90caf9;
+            border-radius: 6px;
+        }
+
+        .otp-section button {
+            background-color: #1565c0;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            padding: 6px 12px;
+            cursor: pointer;
+        }
+
+        .otp-section button:hover {
+            background-color: #0d47a1;
+        }
+
+        .otp-timer {
+            color: #555;
+            font-size: 12px;
+            margin-left: 5px;
+        }
     </style>
 
-   
     <div sclass="center-screen">
-        <window title="Bank Account Registration" border="normal" width="70%"
-                sclass="signup-window" closable="false" apply="com.iispl.lms.signup.SignUpComposer">
+        <window title="Bank Account Registration" border="normal"
+            sclass="signup-window" closable="false"
+            apply="com.iispl.lms.signup.SignUpComposer">
 
             <vbox align="center" spacing="10px">
-                <label value="Open a New Bank Account" sclass="form-title"/>
-                <separator/>
+                <label value="Open a New Bank Account" sclass="form-title" />
 
-                
+                <!-- Progress Bar -->
                 <div sclass="progress-container">
-                    <div id="progressBar" sclass="progress-bar"/>
+                    <div id="progressBar" sclass="progress-bar" />
                 </div>
 
-                <!-- Step 1 -->
+                <!-- STEP 1 -->
                 <vlayout id="step1" sclass="form-step">
-                    <label value="Step 1: Account Information" sclass="step-title"/>
+                    <label value="Step 1: Account Information" sclass="step-title" />
                     <grid sclass="form-grid">
                         <rows>
-                            <row><label value="Full Name:"/><textbox id="fullName" placeholder="Enter your full name"/></row>
+                            <row><label value="Full Name:"/><textbox id="fullName" placeholder="Enter full name"/></row>
                             <row><label value="Email Address:"/><textbox id="email" type="email" placeholder="example@mail.com"/></row>
-                            <row><label value="Phone Number:"/><textbox id="phone" maxlength="10" placeholder="9876543210"/></row>
+                            <row><label value="Phone Number:"/><longbox id="phone" placeholder="9876543210" maxlength="10"/></row>
                             <row><label value="Password:"/><textbox id="password" type="password" placeholder="Enter password"/></row>
                             <row><label value="Confirm Password:"/><textbox id="confirmPassword" type="password" placeholder="Re-enter password"/></row>
                         </rows>
                     </grid>
                 </vlayout>
 
-                <!-- Step 2 -->
+                <!-- STEP 2 -->
                 <vlayout id="step2" visible="false" sclass="form-step">
-                    <label value="Step 2: Personal Details" sclass="step-title"/>
+                    <label value="Step 2: Personal Details" sclass="step-title" />
                     <grid sclass="form-grid">
                         <rows>
-                            <row><label value="Date of Birth:"/><datebox id="dob"/></row>
+                            <row><label value="Date of Birth:"/><datebox id="dob" format="yyyy-MM-dd"/></row>
                             <row><label value="Gender:"/><combobox id="gender"><comboitem label="Male"/><comboitem label="Female"/><comboitem label="Other"/></combobox></row>
                             <row><label value="Nationality:"/><combobox id="nationality"><comboitem label="Indian"/><comboitem label="Other"/></combobox></row>
                             <row><label value="Govt ID Type:"/><combobox id="idType"><comboitem label="Aadhar"/><comboitem label="PAN"/><comboitem label="Voter ID"/><comboitem label="Passport"/></combobox></row>
                             <row><label value="Govt ID Number:"/><textbox id="idNumber" placeholder="Enter ID Number"/></row>
-                            <row><label value="Upload ID Proof:"/><fileupload id="idUpload" label="Upload" upload="true"/></row>
+                            <row><label value="Upload ID Proof:"/><fileupload id="idUpload" label="Upload" upload="true"/><label id="fileNameLabel" value=""/></row>
                             <row><label value="Occupation:"/><combobox id="occupation"><comboitem label="Salaried"/><comboitem label="Student"/><comboitem label="Self-Employed"/><comboitem label="Retired"/></combobox></row>
-                            <row><label value="Monthly Income:"/><textbox id="income" placeholder="e.g., 50000"/></row>
+                            <row><label value="Monthly Income:"/><longbox id="income" placeholder="e.g., 50000"/></row>
                         </rows>
                     </grid>
                 </vlayout>
 
-                <!-- Step 3 -->
+                <!-- STEP 3 -->
                 <vlayout id="step3" visible="false" sclass="form-step">
-                    <label value="Step 3: Address Details" sclass="step-title"/>
+                    <label value="Step 3: Address Details" sclass="step-title" />
                     <grid sclass="form-grid">
                         <rows>
                             <row><label value="Address Line 1:"/><textbox id="address1"/></row>
                             <row><label value="Address Line 2:"/><textbox id="address2"/></row>
-                            <row><label value="Country:"/><textbox id="country" placeholder="India"/></row>
-                            <row><label value="State:"/><textbox id="state"/></row>
+                            <row><label value="Country:"/><textbox id="country" value="India" readonly="true"/></row>
+                            <row>
+                                <label value="State:"/>
+                                <combobox id="state">
+                                    <comboitem label="West Bengal"/><comboitem label="Bihar"/><comboitem label="Jharkhand"/><comboitem label="Odisha"/>
+                                    <comboitem label="Uttar Pradesh"/><comboitem label="Maharashtra"/><comboitem label="Tamil Nadu"/><comboitem label="Delhi"/>
+                                </combobox>
+                            </row>
                             <row><label value="City:"/><textbox id="city"/></row>
                             <row><label value="Postal Code:"/><textbox id="postalCode"/></row>
                         </rows>
                     </grid>
                 </vlayout>
 
-                <!-- Step 4 -->
+                <!-- STEP 4 -->
                 <vlayout id="step4" visible="false" sclass="form-step">
-                    <label value="Step 4: Security &amp; Compliance" sclass="step-title"/>
+                    <label value="Step 4: Security &amp; Compliance" sclass="step-title" />
                     <grid sclass="form-grid">
                         <rows>
-                            <row><label value="Security Question:"/><textbox id="securityQuestion" placeholder="e.g., Your first pet's name?"/></row>
-                            <row><label value="Answer:"/><textbox id="securityAnswer"/></row>
+                            <row><label value="Security Question:"/><combobox id="securityQuestion"><comboitem label="Your first pet's name?"/><comboitem label="Your mother's maiden name?"/><comboitem label="Your favorite teacher's name?"/><comboitem label="Your favorite city?"/></combobox></row>
+                            <row><label value="Answer:"/><textbox id="securityAnswer" width="70%"/></row>
                             <row><label value="2FA Enabled:"/><checkbox id="twoFA" label="Enable Two-Factor Authentication"/></row>
-                            <row><label/><checkbox id="terms" label="I agree to Terms &amp; Conditions"/></row>
-                            <row><label/><checkbox id="privacy" label="I agree to Privacy Policy"/></row>
+
+                            <!-- OTP Section -->
+                            <row>
+                                <label/>
+                                <hbox spacing="10px" sclass="otp-section">
+                                    <button id="sendOtpBtn" label="Send OTP" visible="false" width="100px"/>
+                                    <textbox id="otpBox" placeholder="Enter OTP" visible="false" width="150px"/>
+                                    <button id="verifyOtpBtn" label="Verify OTP" visible="false" width="100px"/>
+                                    <label id="otpTimer" value="" sclass="otp-timer"/>
+                                </hbox>
+                            </row>
+
+                            <row>
+                                <label/>
+                                <vlayout spacing="5px">
+                                    <checkbox id="terms" label="I agree to Terms &amp; Conditions"/>
+                                    <checkbox id="privacy" label="I agree to Privacy Policy"/>
+                                </vlayout>
+                            </row>
                         </rows>
                     </grid>
                 </vlayout>
 
-                <!-- Navigation Buttons -->
+                <!-- NAVIGATION BUTTONS -->
                 <hbox spacing="10px" align="center">
                     <button id="prevBtn" label="Previous" sclass="nav-btn" disabled="true"/>
                     <button id="nextBtn" label="Next" sclass="nav-btn"/>
                     <button id="submitBtn" label="Submit" visible="false" sclass="submit-btn"/>
                 </hbox>
+
             </vbox>
         </window>
     </div>
