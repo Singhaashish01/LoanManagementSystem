@@ -2,7 +2,7 @@
 
 <zk>
     <style>
-        /* --- Global Reset --- */
+        /*  Global Reset  */
         *, *::before, *::after {
             box-sizing: border-box;
         }
@@ -14,7 +14,7 @@
             padding: 0;
         }
 
-        /* --- Split background layout --- */
+        /*  Split background layout  */
         .main-container {
             display: flex;
             height: 100vh;
@@ -47,7 +47,7 @@
             align-items: center;
         }
 
-        /* --- Login Card --- */
+        /*  Login Card  */
         .login-container {
             background: #fff;
             padding: 2rem;

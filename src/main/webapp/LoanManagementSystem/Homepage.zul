@@ -4,18 +4,18 @@
         <style>
             body, .z-body {
                 margin: 0;
-                background: #f4f8ff;
+                background: #004a99;
                 font-family: 'Poppins', sans-serif;
                 overflow: hidden; /* prevent scroll */
             }
 
-            /* ===== NAVBAR ===== */
+            /*  NAVBAR  */
             .navbar {
                 position: fixed;
                 top: 0;
                 left: 0;
                 width: 100%;
-                background: #1f4b9e;
+                background: #004a99;
                 color: white;
                 height: 60px;
                 display: flex;
@@ -50,7 +50,7 @@
 
             .btn {
                 background: white;
-                color: #1f4b9e;
+                color: #004a99;
                 border-radius: 20px;
                 padding: 6px 16px;
                 font-weight: 600;
@@ -60,10 +60,10 @@
             }
 
             .btn:hover {
-                background: #e6ecff;
+                background: #004a99;
             }
 
-            /* ===== PAGE CONTAINER ===== */
+            /*  PAGE CONTAINER  */
             .page-container {
                 position: absolute;
                 top: 60px; /* below navbar */
@@ -76,7 +76,7 @@
                 padding: 20px 60px;
             }
 
-            /* ===== HERO SECTION ===== */
+            /*  HERO SECTION  */
             .hero-section {
                 display: flex;
                 justify-content: space-between;
@@ -113,7 +113,7 @@
             .know-btn {
                 margin-top: 20px;
                 background: white;
-                color: #003366;
+                color: #004a99;
                 padding: 10px 20px;
                 border: none;
                 border-radius: 20px;
@@ -128,7 +128,7 @@
                 box-shadow: 0 5px 12px rgba(0,0,0,0.2);
             }
 
-            /* ===== INFO SECTION ===== */
+            /*  INFO SECTION  */
             .info-section {
                 display: flex;
                 justify-content: space-around;
@@ -160,7 +160,7 @@
             .info-box h3 {
                 margin: 5px 0 8px;
                 font-size: 16px;
-                color: #003366;
+                color: #004a99;
             }
 
             .info-box p {
@@ -168,10 +168,10 @@
                 color: #555;
             }
 
-            /* ===== FOOTER ===== */
+            /*  FOOTER  */
             .footer {
                 text-align: center;
-                background: #1f4b9e;
+                background: #004a99;
                 color: white;
                 border-radius: 15px;
                 padding: 10px;
@@ -180,22 +180,21 @@
             }
         </style>
 
-        <!-- ===== NAVBAR ===== -->
+        <!--  NAVBAR  -->
         <div sclass="navbar">
             <div sclass="navbar-left">
-                <label value="Home" />
-                <label value="About Us" />
-                <label value="Services" />
-                <label value="Contact" />
-                <label value="Blog" />
+                <label value="Home" id="homeNav"/>
+                <label value="About Us" id="aboutNav"/>
+                <label value="Services" id="serviceNav"/>
+                <label value="Contact" id="contactNav"/>
             </div>
             <div sclass="navbar-right">
-                <button sclass="btn" label="Sign Up"  />
-                <button sclass="btn" label="Log In"  />
+                <button sclass="btn" label="Sign Up" id="signBtn" />
+                <button sclass="btn" label="Log In"  id="logBtn"/>
             </div>
         </div>
 
-        <!-- ===== PAGE CONTENT ===== -->
+        <!--  PAGE CONTENT  -->
         <div sclass="page-container">
 
             <!-- HERO SECTION -->
@@ -205,10 +204,10 @@
                         <h1>Where <span>Money</span> Meets Trust</h1>
                         <p>Manage your finances effortlessly with our Loan Management System.</p>
                     </html>
-                    <button sclass="know-btn" label="Know More" />
+                    <button sclass="know-btn" label="Know More" id="knowMBtn"/>
                 </div>
                 <div sclass="hero-image">
-                    <image src="/img/hero-loan.jpg" width="280px" height="auto" />
+                    <image src="/img/Loan-Management-System.jpg" width="400px" height="auto" />
                 </div>
             </div>
 

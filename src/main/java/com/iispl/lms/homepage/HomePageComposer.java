@@ -23,39 +23,39 @@ public class HomePageComposer extends SelectorComposer<Window>{
 	    }
 
 	    // NAVBAR BUTTONS 
-	    @Listen("onClick = button[label='Sign Up']")
+	    @Listen("onClick = #signBtn")
 	    public void onSignUpClick() {
 	        Executions.sendRedirect("SignUp.zul");
 	    }
 
-	    @Listen("onClick = button[label='Log In']")
+	    @Listen("onClick = #logBtn")
 	    public void onLoginClick() {
 	        Executions.sendRedirect("login.zul");
 	    }
 
 	    // HERO BUTTON 
-	    @Listen("onClick = button.know-btn")
+	    @Listen("onClick = #knowMBtn")
 	    public void onKnowMoreClick() {
-	        Executions.sendRedirect("aboutus.zul");
+	        Executions.sendRedirect("AboutUs.zul");
 	    }
 
 	    // OPTIONAL NAVBAR LINKS 
-	    @Listen("onClick = label[value='Home']")
+	    @Listen("onClick = #homeNav")
 	    public void onHomeClick() {
-	        Executions.sendRedirect("homepage.zul");
+	        Executions.sendRedirect("Homepage.zul");
 	    }
 
-	    @Listen("onClick = label[value='About Us']")
+	    @Listen("onClick = #aboutNav")
 	    public void onAboutClick() {
-	        Executions.sendRedirect("aboutus.zul");
+	        Executions.sendRedirect("AboutUs.zul");
 	    }
 
-	    @Listen("onClick = label[value='Services']")
+	    @Listen("onClick = #serviceNav")
 	    public void onServicesClick() {
 	        Executions.sendRedirect("services.zul");
 	    }
 
-	    @Listen("onClick = label[value='Contact']")
+	    @Listen("onClick = #contactNav")
 	    public void onContactClick() {
 	        Executions.sendRedirect("contact.zul");
 	    }

@@ -1,0 +1,193 @@
+<?page title="Our Services" contentType="text/html;charset=UTF-8"?>
+<zk>
+<style>
+    @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css');
+
+    body, .z-body {
+        margin: 0;
+        padding: 0;
+        background: #eef3fb;
+        font-family: 'Poppins', sans-serif;
+        height: 100vh;
+        overflow: hidden;
+    }
+
+    /* HEADER */
+    .header {
+        background: #004a99;
+        color: white;
+        padding: 15px 30px;
+        font-size: 28px;
+        font-weight: bold;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+        text-align: center;
+        z-index: 100;
+    }
+
+    /* FOOTER */
+    .footer {
+        background: #004a99;
+        color: white;
+        padding: 15px 30px;
+        font-size: 14px;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        text-align: center;
+        box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+        z-index: 100;
+    }
+
+    /* MAIN CONTENT AREA */
+    .content-wrapper {
+        position: absolute;
+        top: 70px;
+        bottom: 55px;
+        left: 0;
+        right: 0;
+        overflow-y: auto;
+        padding: 20px 40px;
+    }
+
+    .page-title {
+        text-align: center;
+        font-size: 30px;
+        font-weight: 700;
+        color: #004a99;
+        margin-bottom: 25px;
+    }
+
+    /* CARDS */
+    .cards-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 20px;
+    }
+
+    .card {
+        width: 32%;
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        padding: 18px;
+        display: flex;
+        gap: 18px;
+        align-items: center;
+        transition: 0.3s ease;
+    }
+
+    .card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 8px 18px rgba(0,0,0,0.2);
+    }
+
+    .card-image {
+        width: 90px;
+        height: 90px;
+        border-radius: 10px;
+        object-fit: cover;
+    }
+
+    .card h3 {
+        margin: 0;
+        font-size: 20px;
+        color: #004a99;
+    }
+
+    .card p {
+        margin-top: 6px;
+        font-size: 14px;
+        color: #444;
+    }
+
+    @media (max-width: 900px) {
+        .card { width: 48%; }
+    }
+
+    @media (max-width: 600px) {
+        .card { width: 100%; }
+    }
+
+</style>
+
+<window height="100%" width="100%">
+
+    <!-- HEADER -->
+    <div class="header">Our Services</div>
+
+    <!-- MAIN CONTENT -->
+    <div class="content-wrapper">
+
+        <div class="page-title">What We Offer</div>
+
+        <div class="cards-container">
+
+            <!-- CARD 1 -->
+            <div class="card">
+                <image class="card-image" src="https://images.unsplash.com/photo-1581092160623-1e7b1a32a1f1" />
+                <html>
+                    <h3><i class="fa-solid fa-money-check-dollar"></i> Loan Processing</h3>
+                    <p>Quick and automated loan approval workflow with secure verification.</p>
+                </html>
+            </div>
+
+            <!-- CARD 2 -->
+            <div class="card">
+                <image class="card-image" src="https://images.unsplash.com/photo-1565514029048-9f8e92adfbe1" />
+                <html>
+                    <h3><i class="fa-solid fa-chart-line"></i> EMI Calculation</h3>
+                    <p>Accurate EMI and repayment schedule generation for all loan types.</p>
+                </html>
+            </div>
+
+            <!-- CARD 3 -->
+            <div class="card">
+                <image class="card-image" src="https://images.unsplash.com/photo-1521791055366-0d553872125f" />
+                <html>
+                    <h3><i class="fa-solid fa-user-shield"></i> Borrower Management</h3>
+                    <p>Maintain detailed borrower profiles, KYC, and financial records.</p>
+                </html>
+            </div>
+
+            <!-- CARD 4 -->
+            <div class="card">
+                <image class="card-image" src="https://images.unsplash.com/photo-1521790945508-bf2a36314e85" />
+                <html>
+                    <h3><i class="fa-solid fa-building-columns"></i> Loan Tracking</h3>
+                    <p>Monitor approved loans, overdue payments, and repayment history.</p>
+                </html>
+            </div>
+
+            <!-- CARD 5 -->
+            <div class="card">
+                <image class="card-image" src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0" />
+                <html>
+                    <h3><i class="fa-solid fa-file-invoice-dollar"></i> Automated Reports</h3>
+                    <p>Generate financial reports for admin, auditor, and management.</p>
+                </html>
+            </div>
+
+            <!-- CARD 6 -->
+            <div class="card">
+                <image class="card-image" src="https://images.unsplash.com/photo-1519389950473-47ba0277781c" />
+                <html>
+                    <h3><i class="fa-solid fa-headset"></i> Customer Support</h3>
+                    <p>Dedicated support for borrowers and administrators with real-time updates.</p>
+                </html>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer">
+        © 2025 Loan Management System | All Rights Reserved.
+    </div>
+
+</window>
+</zk>
