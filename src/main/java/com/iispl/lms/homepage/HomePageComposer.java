@@ -57,6 +57,6 @@ public class HomePageComposer extends SelectorComposer<Window>{
 
 	    @Listen("onClick = #contactNav")
 	    public void onContactClick() {
-	        Executions.sendRedirect("contact.zul");
+	        Executions.sendRedirect("ContactUs.zul");
 	    }
 	}
