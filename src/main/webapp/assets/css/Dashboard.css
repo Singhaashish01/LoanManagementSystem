@@ -24,6 +24,8 @@ body, .z-body {
     padding: 20px;
     height: 100vh;
 }
+
+
 .menu-item {
     color: #ffffffaa;
     padding: 10px 0;
@@ -79,3 +81,71 @@ body, .z-body {
     margin-bottom: 10px;
     font-weight: bold;
 }
+
+/* HEADER */
+.header-bar {
+    background: #1e1f29;
+    color: #fff;
+    padding: 15px;
+    font-size: 20px;
+}
+.title {
+    font-weight: bold;
+}
+.user-label {
+    font-size: 14px;
+    opacity: 0.8;
+}
+
+/* Sidebar Toggle Icon */
+.sidebar-toggle {
+    font-size: 22px;
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+/* SIDEBAR */
+.sidebar {
+    background: #11121a;
+    height: 100%;
+    padding: 20px 10px;
+    transition: width 0.3s ease;
+}
+
+/* Collapsed */
+.sidebar.collapsed {
+    width: 60px !important;
+}
+.sidebar.collapsed .menu-item label {
+    display: none;
+}
+.sidebar.collapsed .menu-item {
+    justify-content: center;
+}
+
+/* MENU ITEMS */
+.menu-item {
+    padding: 12px 15px;
+    margin: 10px 0;
+    border-radius: 10px;
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    transition: background 0.3s;
+}
+
+.menu-item:hover {
+    background: #232434;
+}
+
+.menu-item.active {
+    background: #3b82f6;
+}
+
+/* ICONS */
+.menu-icon {
+    font-size: 18px;
+}
+

@@ -3,6 +3,7 @@ package com.iispl.lms.dashboard;
 import org.zkoss.chart.Charts;
 import org.zkoss.chart.model.DefaultPieModel;
 import org.zkoss.chart.model.DefaultXYModel;
+import org.zkoss.zk.ui.event.Events;
 import org.zkoss.zk.ui.select.SelectorComposer;
 import org.zkoss.zk.ui.select.annotation.Wire;
 import org.zkoss.zul.Label;
@@ -21,6 +22,11 @@ public class DashboardComposer extends SelectorComposer<Vlayout> {
     @Wire private Charts loanTrendChart;
     @Wire private Charts loanTypeChart;
     @Wire private Listbox loanListbox;
+    @Wire
+    private Vlayout sidebar;
+
+    @Wire
+    private Label sidebarToggle;
 
     @Override
     public void doAfterCompose(Vlayout comp) throws Exception {
@@ -30,6 +36,8 @@ public class DashboardComposer extends SelectorComposer<Vlayout> {
         loadTrendChart();
         loadLoanTypeChart();
         loadRecentApplications();
+        
+        sidebarToggle.addEventListener(Events.ON_CLICK, evt -> toggleSidebar());
     }
 
     private void loadStats() {
@@ -70,5 +78,13 @@ public class DashboardComposer extends SelectorComposer<Vlayout> {
         list.add(new String[]{"Sneha", "2,00,000", "Rejected", "21 Nov"});
 
         loanListbox.setModel(list);
+    }
+    
+    private void toggleSidebar() {
+        if (sidebar.getSclass().contains("collapsed")) {
+            sidebar.setSclass("sidebar");
+        } else {
+            sidebar.setSclass("sidebar collapsed");
+        }
     }
 }
