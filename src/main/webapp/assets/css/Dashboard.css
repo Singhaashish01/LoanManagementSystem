@@ -1,151 +1,206 @@
+/* ===========================================
+   GLOBAL
+=========================================== */
 body, .z-body {
-    font-family: 'Poppins', sans-serif;
+    font-family: "Poppins", sans-serif;
     background: #f5f7fb;
+    margin: 0;
+    padding: 0;
 }
 
-/* HEADER */
-.header-bar {
+/* ===========================================
+   TOP HEADER
+=========================================== */
+.top-header {
+    width: 100%;
     background: #ffffff;
-    padding: 15px 20px;
+    padding: 18px 28px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-}
-.header-bar .title {
-    font-size: 20px;
-    font-weight: bold;
-}
-.user-label {
-    color: #444;
-    font-size: 14px;
-}
-
-/* SIDEBAR */
-.sidebar {
-    background: #203A43;
-    padding: 20px;
-    height: 100vh;
-}
-
-
-.menu-item {
-    color: #ffffffaa;
-    padding: 10px 0;
-    font-size: 14px;
-    cursor: pointer;
-}
-.menu-item:hover, .menu-item.active {
-    color: #ffffff;
-    font-weight: bold;
-}
-
-/* MAIN CONTENT */
-.main-container {
-    padding: 25px;
-    overflow: auto;
-}
-
-/* CARD STYLES */
-.card-row {
-    gap: 20px;
-    margin-bottom: 25px;
-}
-
-.stat-card {
-    width: 200px;
-    background: white;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 3px 12px rgba(0,0,0,0.08);
-    text-align: center;
-}
-
-.stat-number {
-    font-size: 28px;
-    font-weight: bold;
-    color: #0066ff;
-}
-
-.stat-title {
-    margin-top: 5px;
-    color: #666;
-}
-
-/* CHARTS */
-.charts-row {
-    gap: 20px;
-    margin-bottom: 25px;
-}
-
-/* TABLE TITLE */
-.section-title {
-    font-size: 18px;
-    margin-bottom: 10px;
-    font-weight: bold;
-}
-
-/* HEADER */
-.header-bar {
-    background: #1e1f29;
-    color: #fff;
-    padding: 15px;
-    font-size: 20px;
-}
-.title {
-    font-weight: bold;
-}
-.user-label {
-    font-size: 14px;
-    opacity: 0.8;
-}
-
-/* Sidebar Toggle Icon */
-.sidebar-toggle {
-    font-size: 22px;
-    margin-right: 20px;
-    cursor: pointer;
-}
-
-/* SIDEBAR */
-.sidebar {
-    background: #11121a;
-    height: 100%;
-    padding: 20px 10px;
-    transition: width 0.3s ease;
-}
-
-/* Collapsed */
-.sidebar.collapsed {
-    width: 60px !important;
-}
-.sidebar.collapsed .menu-item label {
-    display: none;
-}
-.sidebar.collapsed .menu-item {
-    justify-content: center;
-}
-
-/* MENU ITEMS */
-.menu-item {
-    padding: 12px 15px;
-    margin: 10px 0;
-    border-radius: 10px;
-    color: #fff;
-    cursor: pointer;
     display: flex;
     align-items: center;
+}
+
+.brand-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: #2575fc;
+}
+
+.toggle-btn {
+    font-size: 26px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-left: 25px;
+    margin-right: 25px;
+    transition: 0.3s ease;
+}
+
+/* Rotate when sidebar collapsed */
+.sidebar.collapsed ~ .main-container .toggle-btn {
+    transform: rotate(180deg);
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.header-icon {
+    font-size: 18px;
+    cursor: pointer;
+    color: #444;
+}
+
+.profile-name {
+    font-size: 14px;
+    color: #333;
+}
+
+.profile-avatar {
+    width: 36px;
+    height: 36px;
+    background: #2575fc;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+}
+
+/* ===========================================
+   SIDEBAR
+=========================================== */
+.sidebar {
+    width: 240px;
+    background: #004a99;
+    height: 100vh;
+    transition: width 0.3s ease-in-out;
+    padding: 20px 0;
+}
+
+.sidebar.collapsed {
+    width: 70px;
+}
+
+/* Menu item */
+.menu-item {
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 8px;
+    margin: 5px 12px;
+    transition: 0.25s;
+    color: white;
     gap: 12px;
-    transition: background 0.3s;
 }
 
 .menu-item:hover {
-    background: #232434;
+    background: #005fc4;
 }
 
 .menu-item.active {
-    background: #3b82f6;
+    background: #2575fc;
 }
 
-/* ICONS */
+/* Icons */
 .menu-icon {
     font-size: 18px;
+    width: 28px;
+    text-align: center;
+    color: white !important;
 }
 
+/* Collapse → hide menu text */
+.sidebar.collapsed .menu-item label:not(.menu-icon) {
+    display: none;
+}
+
+/* ===========================================
+   MAIN CONTENT
+=========================================== */
+.main-container {
+    padding: 25px;
+    width: 100%;
+    overflow-y: auto;
+}
+
+/* ===========================================
+   DASHBOARD CARDS
+=========================================== */
+.card-container {
+    display: flex;
+    gap: 25px;
+    width: 100%;
+    margin-bottom: 25px;
+}
+
+.dash-card {
+    flex: 1;
+    padding: 25px;
+    border-radius: 14px;
+    color: white;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    position: relative;
+}
+
+.card-blue { background: linear-gradient(45deg, #6a11cb, #2575fc); }
+.card-red { background: linear-gradient(45deg, #ff6a00, #ee0979); }
+.card-green { background: linear-gradient(45deg, #11998e, #38ef7d); }
+.card-orange { background: linear-gradient(45deg, #fdbb2d, #f9484a); }
+
+.card-number {
+    font-size: 32px;
+    font-weight: 700;
+}
+
+.card-label {
+    font-size: 15px;
+    opacity: 0.95;
+    margin-top: 6px;
+}
+
+.card-icon {
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+    font-size: 32px;
+    opacity: 0.4;
+}
+
+/* ===========================================
+   CHARTS
+=========================================== */
+.charts-row {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+/* ===========================================
+   LISTBOX SECTION
+=========================================== */
+.section-title {
+    font-size: 20px;
+    font-weight: 600;
+    margin: 15px 0;
+}
+
+.listbox {
+    background: white !important;
+    border-radius: 10px !important;
+}
+
+/* ===========================================
+   FOOTER
+=========================================== */
+.footer-bar {
+    width: 100%;
+    margin-top: 30px;
+    text-align: center;
+    padding: 10px;
+    color: #777;
+    font-size: 14px;
+}

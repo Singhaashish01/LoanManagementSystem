@@ -1,4 +1,4 @@
-package com.iispl.lms.cotactus;
+package com.iispl.lms.contactus;
 
 import org.zkoss.zk.ui.select.SelectorComposer;
 import org.zkoss.zk.ui.select.annotation.Wire;
