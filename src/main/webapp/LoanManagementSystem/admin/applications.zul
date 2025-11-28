@@ -1,0 +1,57 @@
+<?page title="Applications" contentType="text/html;charset=UTF-8"?>
+<zk>
+    <vlayout width="100%" height="100%" apply="com.iispl.lms.dashboard.admin.ApplicationComposer">
+
+        <!-- PAGE TITLE -->
+        <label value="Loan Applications" sclass="section-title" />
+
+        <!-- APPLICATION CARDS -->
+        <hlayout sclass="card-container">
+            <div sclass="dash-card card-blue">
+                <label id="lblTotalApps" sclass="card-number" />
+                <label value="Total Applications" sclass="card-label" />
+            </div>
+
+            <div sclass="dash-card card-orange">
+                <label id="lblPending" sclass="card-number" />
+                <label value="Pending Approval" sclass="card-label" />
+            </div>
+
+            <div sclass="dash-card card-green">
+                <label id="lblApproved" sclass="card-number" />
+                <label value="Approved" sclass="card-label" />
+            </div>
+
+            <div sclass="dash-card card-red">
+                <label id="lblRejected" sclass="card-number" />
+                <label value="Rejected" sclass="card-label" />
+            </div>
+        </hlayout>
+
+        <!-- APPLICATION TABLE -->
+        <listbox id="appsList" mold="paging" pageSize="10" width="100%">
+            <listhead>
+                <listheader label="Applicant" />
+                <listheader label="Loan Type" />
+                <listheader label="Amount" />
+                <listheader label="Status" />
+                <listheader label="Applied Date" />
+                <listheader label="Action" />
+            </listhead>
+
+            <template name="model">
+                <listitem>
+                    <listcell label="${each.applicant}" />
+                    <listcell label="${each.type}" />
+                    <listcell label="${each.amount}" />
+                    <listcell label="${each.status}" />
+                    <listcell label="${each.date}" />
+                    <listcell>
+                        <button label="View" sclass="btn-secondary view-btn" />
+                    </listcell>
+                </listitem>
+            </template>
+        </listbox>
+
+    </vlayout>
+</zk>

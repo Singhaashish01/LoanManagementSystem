@@ -1,0 +1,88 @@
+<?page title="Reports" contentType="text/html;charset=UTF-8"?>
+<zk>
+    <vlayout width="100%" height="100%" apply="com.iispl.lms.dashboard.admin.ReportComposer"
+             style="padding:16px">
+
+        <!-- HEADER -->
+        <hlayout width="100%" style="margin-bottom:15px;">
+            <label value="Reports" style="font-size:22px;font-weight:600;" />
+            <space />
+            <button id="btnExport" label="Export CSV"/>
+        </hlayout>
+
+        <!-- FILTER BAR -->
+        <hlayout width="100%" spacing="12px" style="margin-bottom:15px;">
+            <textbox id="txtSearch" width="220px" placeholder="Search by applicant or ID"/>
+            <combobox id="cmbStatus" width="140px" placeholder="Status">
+                <comboitem label="All"/>
+                <comboitem label="Pending"/>
+                <comboitem label="Approved"/>
+                <comboitem label="Rejected"/>
+            </combobox>
+
+            <combobox id="cmbType" width="140px" placeholder="Loan Type">
+                <comboitem label="All"/>
+                <comboitem label="Personal"/>
+                <comboitem label="Home"/>
+                <comboitem label="Business"/>
+            </combobox>
+
+            <datebox id="dtFrom" placeholder="From"/>
+            <datebox id="dtTo" placeholder="To"/>
+
+            <button id="btnSearch" label="Filter"/>
+            <button id="btnClear" label="Clear"/>
+        </hlayout>
+
+        <!-- SUMMARY CARDS -->
+        <hlayout width="100%" spacing="15px" style="margin-bottom:18px;">
+            <vlayout sclass="summary-card">
+                <label value="Total Loans"/>
+                <label id="lblTotal" style="font-size:20px;font-weight:bold;"/>
+            </vlayout>
+            <vlayout sclass="summary-card">
+                <label value="Approved"/>
+                <label id="lblApproved" style="font-size:20px;font-weight:bold;"/>
+            </vlayout>
+            <vlayout sclass="summary-card">
+                <label value="Pending"/>
+                <label id="lblPending" style="font-size:20px;font-weight:bold;"/>
+            </vlayout>
+            <vlayout sclass="summary-card">
+                <label value="Overdue"/>
+                <label id="lblOverdue" style="font-size:20px;font-weight:bold;"/>
+            </vlayout>
+        </hlayout>
+
+        <!-- LIST TABLE -->
+        <listbox id="reportList" mold="paging" pageSize="10" width="100%">
+            <listhead>
+                <listheader label="ID"/>
+                <listheader label="Applicant"/>
+                <listheader label="Amount"/>
+                <listheader label="Type"/>
+                <listheader label="Status"/>
+                <listheader label="Date"/>
+                <listheader label="Days Overdue"/>
+                <listheader label="Action"/>
+            </listhead>
+
+            <template name="model">
+                <listitem>
+                    <listcell label="${each.id}"/>
+                    <listcell label="${each.applicant}"/>
+                    <listcell label="${each.amount}"/>
+                    <listcell label="${each.type}"/>
+                    <listcell label="${each.status}"/>
+                    <listcell label="${each.dateAsString}"/>
+                    <listcell label="${each.daysOverdue}"/>
+                    <listcell>
+                        <!-- IMPORTANT: no ID, only class -->
+                        <button label="View" sclass="view-btn"/>
+                    </listcell>
+                </listitem>
+            </template>
+        </listbox>
+
+    </vlayout>
+</zk>

@@ -1,0 +1,46 @@
+<?page title="Loans" contentType="text/html;charset=UTF-8"?>
+<zk>
+    <vlayout width="100%" height="100%" apply="com.iispl.lms.dashboard.admin.LoanComposer">
+
+        <!-- PAGE TITLE -->
+        <label value="Loan Management" sclass="section-title" />
+
+        <!-- FILTER BAR -->
+        <hlayout sclass="filter-bar" style="margin-bottom:20px;">
+            <textbox id="txtSearch" placeholder="Search by applicant..." width="250px" />
+            <combobox id="cmbStatus" width="180px" placeholder="Select Status">
+                <comboitem label="All" />
+                <comboitem label="Pending" />
+                <comboitem label="Approved" />
+                <comboitem label="Rejected" />
+            </combobox>
+            <button id="btnSearch" label="Search" sclass="btn-primary" />
+        </hlayout>
+
+        <!-- LOANS TABLE -->
+        <listbox id="loanList" mold="paging" pageSize="10" width="100%">
+            <listhead>
+                <listheader label="Applicant" />
+                <listheader label="Loan Amount" />
+                <listheader label="Loan Type" />
+                <listheader label="Status" />
+                <listheader label="Date" />
+                <listheader label="Action" />
+            </listhead>
+
+            <template name="model">
+                <listitem>
+                    <listcell label="${each.applicant}" />
+                    <listcell label="${each.amount}" />
+                    <listcell label="${each.type}" />
+                    <listcell label="${each.status}" />
+                    <listcell label="${each.date}" />
+                    <listcell>
+                        <button label="View" sclass="btn-secondary view-btn" />
+                    </listcell>
+                </listitem>
+            </template>
+        </listbox>
+
+    </vlayout>
+</zk>

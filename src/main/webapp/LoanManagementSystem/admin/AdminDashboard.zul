@@ -41,13 +41,13 @@
 				</hlayout>
 
 				<!-- Loans -->
-				<hlayout sclass="menu-item">
+				<hlayout sclass="menu-item" id="menuLoans">
 					<label sclass="menu-icon fa fa-coins" />
 					<label value="Loans" />
 				</hlayout>
 
 				<!-- Applications -->
-				<hlayout sclass="menu-item">
+				<hlayout sclass="menu-item" id="menuApplications">
 					<label sclass="menu-icon fa fa-file-lines" />
 					<label value="Applications" />
 				</hlayout>
@@ -59,7 +59,7 @@
 				</hlayout>
 
 				<!-- Reports -->
-				<hlayout sclass="menu-item">
+				<hlayout sclass="menu-item" id="menuReports">
 					<label sclass="menu-icon fa fa-chart-line" />
 					<label value="Reports" />
 				</hlayout>

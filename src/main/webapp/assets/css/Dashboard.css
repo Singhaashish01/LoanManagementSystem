@@ -23,7 +23,7 @@ body, .z-body {
 .brand-title {
     font-size: 24px;
     font-weight: 700;
-    color: #2575fc;
+    color: #004c8f;
 }
 
 .toggle-btn {
@@ -60,7 +60,7 @@ body, .z-body {
 .profile-avatar {
     width: 36px;
     height: 36px;
-    background: #2575fc;
+    background: #004c8f;
     color: white;
     border-radius: 50%;
     display: flex;
@@ -74,7 +74,7 @@ body, .z-body {
 =========================================== */
 .sidebar {
     width: 240px;
-    background: #004a99;
+    background: #004c8f;
     height: 100vh;
     transition: width 0.3s ease-in-out;
     padding: 20px 0;
@@ -98,11 +98,11 @@ body, .z-body {
 }
 
 .menu-item:hover {
-    background: #005fc4;
+    background: #004c8f;
 }
 
 .menu-item.active {
-    background: #2575fc;
+    background: #004c8f;
 }
 
 /* Icons */
@@ -146,7 +146,7 @@ body, .z-body {
     position: relative;
 }
 
-.card-blue { background: linear-gradient(45deg, #6a11cb, #2575fc); }
+.card-blue { background: linear-gradient(45deg, #6a11cb, #004c8f); }
 .card-red { background: linear-gradient(45deg, #ff6a00, #ee0979); }
 .card-green { background: linear-gradient(45deg, #11998e, #38ef7d); }
 .card-orange { background: linear-gradient(45deg, #fdbb2d, #f9484a); }
