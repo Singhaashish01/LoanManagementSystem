@@ -8,14 +8,13 @@ import org.zkoss.zk.ui.Sessions;
 import org.zkoss.zk.ui.event.Events;
 import org.zkoss.zk.ui.select.SelectorComposer;
 import org.zkoss.zk.ui.select.annotation.Wire;
-import org.zkoss.zul.Div;
 import org.zkoss.zul.Hlayout;
 import org.zkoss.zul.Label;
 import org.zkoss.zul.ListModelList;
 import org.zkoss.zul.Listbox;
 import org.zkoss.zul.Vlayout;
 
-public class DashboardComposer extends SelectorComposer<Vlayout> {
+public class AdminDashboardComposer extends SelectorComposer<Vlayout> {
 
 	private static final long serialVersionUID = -6735214827680029146L;
 
@@ -28,9 +27,7 @@ public class DashboardComposer extends SelectorComposer<Vlayout> {
 	@Wire
 	private Label lblOverdue;
 	@Wire
-	private Label lblAdminName;
-	@Wire
-	private Label lblAvatarText;
+    private Label greetingText;  
 	@Wire
 	private Hlayout menuLoans, menuApplications, menuReports;
 	@Wire
@@ -42,6 +39,9 @@ public class DashboardComposer extends SelectorComposer<Vlayout> {
 
 	@Wire
 	private Vlayout sidebar;
+	
+	@Wire
+	private Vlayout mainContainer;
 	@Wire
 	private Label sidebarToggle;
 
@@ -49,16 +49,15 @@ public class DashboardComposer extends SelectorComposer<Vlayout> {
 	public void doAfterCompose(Vlayout comp) throws Exception {
 		super.doAfterCompose(comp);
 
-		String adminName = (String) Sessions.getCurrent().getAttribute("loggedAdmin");
-
-		if (adminName != null) {
-			lblAdminName.setValue("Welcome Admin " + adminName);
-			lblAvatarText.setValue(adminName.substring(0, 1).toUpperCase());
-		}
-
 		menuLoans.addEventListener(Events.ON_CLICK, e -> Executions.sendRedirect("/LoanManagementSystem/admin/loans.zul"));
 		menuApplications.addEventListener(Events.ON_CLICK, e -> Executions.sendRedirect("/LoanManagementSystem/admin/applications.zul"));
 		menuReports.addEventListener(Events.ON_CLICK, e -> Executions.sendRedirect("/LoanManagementSystem/admin/reports.zul"));
+		
+		loanTrendChart.setWidth(500);
+		loanTrendChart.setHeight(300);
+
+		loanTypeChart.setWidth(500);
+		loanTypeChart.setHeight(300);
 		
 		loadStats();
 		loadTrendChart();
@@ -67,12 +66,23 @@ public class DashboardComposer extends SelectorComposer<Vlayout> {
 
 		sidebarToggle.addEventListener(Events.ON_CLICK, evt -> toggleSidebar());
 	}
-
+	
+	
 	private void toggleSidebar() {
 		if (sidebar.getSclass().contains("collapsed")) {
 			sidebar.setSclass("sidebar");
+			mainContainer.setSclass("main-container");
+			loanTrendChart.setWidth(500);
+			loanTypeChart.setWidth(500);
+			loanTrendChart.invalidate();
+	        loanTypeChart.invalidate();
 		} else {
 			sidebar.setSclass("sidebar collapsed");
+			mainContainer.setSclass("main-container enlarge");
+			loanTrendChart.setWidth(600);
+			loanTypeChart.setWidth(600);
+			loanTrendChart.invalidate();
+	        loanTypeChart.invalidate();
 		}
 	}
 

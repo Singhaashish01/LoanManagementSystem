@@ -1,0 +1,93 @@
+<zk apply="com.example.loan.LoanComposer">
+
+    <window title="User Dashboard" border="normal" width="100%">
+
+        <!-- Summary Panels -->
+        <hbox spacing="10px">
+
+            <vlayout>
+                <label value="Total Loan Amount:"/>
+                <label id="lblTotalLoan"/>
+            </vlayout>
+
+            <vlayout>
+                <label value="Active Loans:"/>
+                <label id="lblActiveLoans"/>
+            </vlayout>
+
+            <vlayout>
+                <label value="Upcoming EMI:"/>
+                <label id="lblUpcomingEmi"/>
+            </vlayout>
+
+            <vlayout>
+                <label value="Due Date:"/>
+                <label id="lblNextEmiDate"/>
+            </vlayout>
+
+            <vlayout>
+                <label value="Paid EMIs:"/>
+                <label id="lblPaidEmis"/>
+            </vlayout>
+
+            <vlayout>
+                <label value="Total EMIs:"/>
+                <label id="lblTotalEmis"/>
+            </vlayout>
+
+            <vlayout>
+                <label value="Loan Status Summary:"/>
+                <label id="lblStatusSummary"/>
+            </vlayout>
+
+        </hbox>
+
+        <separator/>
+
+        <!-- Active Loans List -->
+        <groupbox>
+            <caption label="Active Loans"/>
+            <grid id="grdLoans">
+                <columns>
+                    <column label="Loan ID"/>
+                    <column label="Type"/>
+                    <column label="Amount"/>
+                    <column label="Tenure"/>
+                    <column label="EMI"/>
+                    <column label="Status"/>
+                    <column label="Action"/>
+                </columns>
+                <rows id="loanRows"/>
+            </grid>
+        </groupbox>
+
+        <separator/>
+
+        <!-- EMI Schedule Table -->
+        <groupbox>
+            <caption label="Upcoming EMI Schedule"/>
+            <grid id="grdEmi">
+                <columns>
+                    <column label="Month"/>
+                    <column label="Due Date"/>
+                    <column label="EMI"/>
+                    <column label="Status"/>
+                    <column label="Action"/>
+                </columns>
+                <rows id="emiRows"/>
+            </grid>
+        </groupbox>
+
+        <separator/>
+
+        <!-- Quick Actions -->
+        <hbox spacing="10px">
+            <button id="btnApplyLoan" label="Apply for Loan"/>
+            <button id="btnEmiCalculator" label="EMI Calculator"/>
+            <button id="btnDocuments" label="Upload Documents"/>
+            <button id="btnPayments" label="View Payments"/>
+        </hbox>
+
+    </window>
+
+</zk>

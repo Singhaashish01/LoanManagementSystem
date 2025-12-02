@@ -12,6 +12,8 @@ body, .z-body {
    TOP HEADER
 =========================================== */
 .top-header {
+	position:fixed;
+	z-index:5;
     width: 100%;
     background: #ffffff;
     padding: 18px 28px;
@@ -43,45 +45,62 @@ body, .z-body {
 .header-actions {
     display: flex;
     align-items: center;
-    gap: 20px;
+    justify-content: flex-end;
+    gap: 12px;
+    padding-right: 20px;
+    width: 100%;
 }
 
-.header-icon {
-    font-size: 18px;
-    cursor: pointer;
+.greeting-text {
+    font-size: 16px;
+    font-weight: 500;
     color: #444;
 }
 
-.profile-name {
-    font-size: 14px;
-    color: #333;
+.login-name {
+    font-size: 16px;
+    font-weight: 600;
+    color: #222;
 }
 
-.profile-avatar {
+.avatar-box {
     width: 36px;
     height: 36px;
-    background: #004c8f;
-    color: white;
     border-radius: 50%;
+    background-color: #4A90E2;
     display: flex;
-    justify-content: center;
     align-items: center;
-    font-weight: 600;
+    justify-content: center;
+}
+
+.avatar-box label {
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+
+
+.main-content {
+	margin-top:5%;
 }
 
 /* ===========================================
    SIDEBAR
 =========================================== */
 .sidebar {
-    width: 240px;
+	position: fixed;           
+    width: 20%;
+    z-index:4;
     background: #004c8f;
     height: 100vh;
-    transition: width 0.3s ease-in-out;
+    transition: width 0.3s ease; 
     padding: 20px 0;
 }
 
 .sidebar.collapsed {
-    width: 70px;
+    width: 5%;
 }
 
 /* Menu item */
@@ -122,9 +141,17 @@ body, .z-body {
    MAIN CONTENT
 =========================================== */
 .main-container {
+	margin-left: 20%;
+	transition: margin-left 0.3s ease;
+    width: calc(100% - 20%); 
+	height: 100%;
     padding: 25px;
-    width: 100%;
     overflow-y: auto;
+}
+
+.main-container.enlarge {
+	margin-left: 5%;         
+    width: calc(100% - 5%); 
 }
 
 /* ===========================================

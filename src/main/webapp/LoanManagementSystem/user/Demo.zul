@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zk xmlns="http://www.zkoss.org/2005/zul"
+    xmlns:h="native"
+    xmlns:n="http://next.zkoss.org/next"
+    apply="">
+
+    <!-- top toolbar -->
+    <borderlayout style="height:100vh;">
+        <north splittable="true" size="64px">
+            <toolbar>
+                <toolbarbutton label="Loan Management" image="/img/logo.png" />
+                <separator/>
+                <label value="&nbsp;"/>
+                <hlayout hflex="1"/>
+                <toolbarbutton id="btnNotifications" image="/img/bell.png" tooltiptext="Notifications"/>
+                <menupopup>
+                    <menuitem label="Profile"/>
+                    <menuitem label="Logout" onClick="window.location.href='/logout'"/>
+                </menupopup>
+                <image src="/img/avatar.png" style="width:36px;height:36px; border-radius:18px; margin-left:8px"/>
+            </toolbar>
+        </north>
+
+        <!-- left sidebar -->
+        <west size="220px" splittable="true">
+            <vlayout style="padding:8px">
+                <button label="Dashboard" image="/img/home.png" width="100%"/>
+                <button label="My Loans" image="/img/loan.png" width="100%"/>
+                <button label="Apply for Loan" image="/img/apply.png" width="100%" onClick="@command('apply')"/>
+                <button label="Payments" image="/img/pay.png" width="100%"/>
+                <button label="EMI Calculator" image="/img/calc.png" width="100%"/>
+                <button label="Documents" image="/img/docs.png" width="100%"/>
+                <button label="Support" image="/img/support.png" width="100%"/>
+                <separator/>
+                <label value="Settings"/>
+                <button label="Profile Settings" width="100%"/>
+            </vlayout>
+        </west>
+
+        <center>
+            <vbox style="padding:12px;">
+                <!-- summary cards -->
+                <hbox spacing="12px" style="margin-bottom:12px;">
+                    <panel title="Total Loan Amount" width="280px">
+                        <panelchildren>
+                            <vlayout>
+                                <label value="${totalLoanFormatted}" style="font-size:22px; font-weight:bold;"/>
+                                <label value="Active Loans: ${activeLoans.size()}" />
+                            </vlayout>
+                        </panelchildren>
+                    </panel>
+
+                    <panel title="Upcoming EMI" width="280px">
+                        <panelchildren>
+                            <vlayout>
+                                <label value="${upcomingEmiFormatted}" style="font-size:20px; font-weight:bold;"/>
+                                <label value="Due on: ${nextEmiDate}" />
+                            </vlayout>
+                        </panelchildren>
+                    </panel>
+
+                    <panel title="Paid EMIs" width="280px">
+                        <panelchildren>
+                            <vlayout>
+                                <label value="${paidEmis}/${totalEmis}" style="font-size:20px; font-weight:bold;"/>
+                                <label value="Completed EMIs" />
+                            </vlayout>
+                        </panelchildren>
+                    </panel>
+
+                    <panel title="Loan Status" width="280px">
+                        <panelchildren>
+                            <vlayout>
+                                <label value="${statusSummary}" style="font-size:16px;"/>
+                            </vlayout>
+                        </panelchildren>
+                    </panel>
+                </hbox>
+
+                <!-- active loans table -->
+                <groupbox mold="3" width="100%">
+                    <caption label="Active Loans"/>
+                    <grid id="loansGrid" model="${activeLoansModel}" emptyMessage="No active loans">
+                        <columns>
+                            <column label="Loan ID" width="100px"/>
+                            <column label="Type" />
+                            <column label="Amount" />
+                            <column label="Tenure (months)" />
+                            <column label="EMI" />
+                            <column label="Status" />
+                            <column label="Actions" width="180px"/>
+                        </columns>
+                        <template name="model" var="loan">
+                            <row>
+                                <label value="${loan.id}"/>
+                                <label value="${loan.type}"/>
+                                <label value="${loanAmountFormatter.format(loan.amount)}"/>
+                                <label value="${loan.tenure}"/>
+                                <label value="${loanAmountFormatter.format(loan.emi)}"/>
+                                <label value="${loan.status}"/>
+                                <hlayout>
+                                    <button label="View" onClick='viewLoan( ${loan} )'/>
+                                    <button label="Pay EMI" onClick='payEmi( ${loan} )' disabled="${loan.status != 'Active'}"/>
+                                </hlayout>
+                            </row>
+                        </template>
+                    </grid>
+                </groupbox>
+
+                <!-- EMI schedule -->
+                <groupbox mold="3" width="100%" style="margin-top:12px;">
+                    <caption label="EMI Schedule (Next 6)"/>
+                    <grid id="emiGrid" model="${emiModel}">
+                        <columns>
+                            <column label="Month" />
+                            <column label="Due Date" />
+                            <column label="EMI" />
+                            <column label="Status" />
+                            <column label="Action" />
+                        </columns>
+                        <template name="model" var="e">
+                            <row>
+                                <label value="${e.monthLabel}"/>
+                                <label value="${e.dueDateString}"/>
+                                <label value="${loanAmountFormatter.format(e.amount)}"/>
+                                <label value="${e.paid ? 'Paid' : 'Pending'}"/>
+                                <button label="${e.paid ? 'Receipt' : 'Pay'}" onClick="paySingleEmi(${e})"/>
+                            </row>
+                        </template>
+                    </grid>
+                </groupbox>
+
+                <!-- CTA -->
+                <hlayout style="margin-top:12px; justify-content:flex-end;">
+                    <button label="+ Apply for New Loan" onClick="@command('apply')"
+                            style="background-color:#2c7be5;color:white;padding:8px 16px;border-radius:4px;"/>
+                </hlayout>
+            </vbox>
+        </center>
+    </borderlayout>
+
+    <!-- small script functions to bridge to composer -->
+    <zscript><![CDATA[
+        /* empty - we're using the composer methods via onClick attributes */
+    ]]></zscript>
+</zk>
